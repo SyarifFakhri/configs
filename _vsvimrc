@@ -2,7 +2,7 @@
 :set ignorecase
 :set smartcase
 :set incsearch
-:set nohlsearch
+:set hlsearch
 
 nmap <C-O> :vsc View.NavigateBackward<CR>
 nmap <C-I> :vsc View.NavigateForward<CR>
