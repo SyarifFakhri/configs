@@ -9,6 +9,8 @@ nmap <C-I> :vsc View.NavigateForward<CR>
 vmap <C-O> :vsc View.NavigateBackward<CR>
 vmap <C-I> :vsc View.NavigateForward<CR>
 
+nmap <C-r> *<s-n>ciw 
+
 nmap s00 /00\c<cr>
 nmap <S-s>00 ?00\c<cr>
 nmap s01 /01\c<cr>    
