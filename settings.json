@@ -1,0 +1,16 @@
+{
+    "window.zoomLevel": 0,
+    "editor.lineNumbers": "relative",
+    "vim.hlsearch": true,
+    "vim.highlightedyank.enable": true,
+    "vim.replaceWithRegister": true,
+    "terminal.integrated.scrollback": 1000000,
+    "vim.sneak": true,
+    "vim.sneakUseIgnorecaseAndSmartcase": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-r>"],
+      "after": ["*", "N", "c", "i", "w"]
+    },
+  ],
+}
