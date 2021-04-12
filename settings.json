@@ -1,17 +1,99 @@
 {
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "keyboard.dispatch": "keyCode",
     "vim.hlsearch": true,
     "editor.lineNumbers": "relative",
     "editor.smoothScrolling": true,
     "vim.highlightedyank.enable": true,
-    "vim.leader": " ",
-    "vim.vimrc.enable": true,
+    "vim.leader": "\\",
     "vim.sneak": true,
     "terminal.integrated.scrollback": 1000000,
     "vim.replaceWithRegister": true,
     "vim.sneakUseIgnorecaseAndSmartcase": true,
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "r"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "d",
+                "P"
+            ]
+        },
+        {
+            "before": [
+                "d"
+            ],
+            "after": [
+                "\"",
+                "d",
+                "d"
+            ]
+        }
+    ],
     "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "m",
+                "a"
+            ],
+            "after": [
+                "m",
+                "A"
+            ]
+        },
+        {
+            "before": [
+                "<space>",
+                "a"
+            ],
+            "after": [
+                "`",
+                "A"
+            ]
+        },
+        {
+            "before": [
+                "m",
+                "o"
+            ],
+            "after": [
+                "m",
+                "O"
+            ]
+        },
+        {
+            "before": [
+                "<space>",
+                "o"
+            ],
+            "after": [
+                "`",
+                "O"
+            ]
+        },
+        {
+            "before": [
+                "m",
+                "e"
+            ],
+            "after": [
+                "m",
+                "E"
+            ]
+        },
+        {
+            "before": [
+                "<space>",
+                "e"
+            ],
+            "after": [
+                "`",
+                "E"
+            ]
+        },
         {
             "before": [
                 "u"
@@ -25,7 +107,43 @@
         },
         {
             "before": [
-                "<C-r>"
+                "<space>"
+            ],
+            "after": [
+                "`"
+            ]
+        },
+        {
+            "before": [
+                "<space>",
+                "<space>"
+            ],
+            "after": [
+                "`",
+                "`"
+            ]
+        },
+        {
+            "before": [
+                "'"
+            ],
+            "after": [
+                "\""
+            ]
+        },
+        {
+            "before": [
+                "d"
+            ],
+            "after": [
+                "\"",
+                "d",
+                "d"
+            ]
+        },
+        {
+            "before": [
+                "R"
             ],
             "after": [
                 "*",
@@ -45,9 +163,46 @@
                 "d",
                 "O"
             ]
+        },
+        {
+            "before": [
+                "T",
+            ],
+            "after": [
+                "g",
+                "d"
+            ]
         }
     ],
     "editor.cursorSurroundingLines": 5,
     "window.customMenuBarAltFocus": false,
-    "window.enableMenuBarMnemonics": false
+    "window.enableMenuBarMnemonics": false,
+    "gitlens.views.searchAndCompare.files.layout": "list",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.renderWhitespace": "none",
+    "git.enableSmartCommit": true,
+    "dart.previewLsp": true,
+    "gitlens.gitCommands.skipConfirmations": [
+        "fetch:command",
+        "stash-push:command",
+        "switch:command",
+        "branch-create:command"
+    ],
+    "git.autofetch": true,
+    "arduino.additionalUrls": [
+        "http://dan.drown.org/stm32duino/package_STM32duino_index.json",
+        "http://arduino.esp8266.com/stable/package_esp8266com_index.json"
+    ],
+    "arduino.ignoreBoards": [
+        "WeMos D1"
+    ],
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "gitlens.mode.active": "zen",
+    "vim.debug.loggingLevelForConsole": "debug"
 }
