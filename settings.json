@@ -1,13 +1,16 @@
 {
-    "window.zoomLevel": 0,
-    "editor.lineNumbers": "relative",
+    "window.zoomLevel": 1,
+    "keyboard.dispatch": "keyCode",
     "vim.hlsearch": true,
-    "vim.highlightedyank.enable": true,
-    "vim.replaceWithRegister": true,
-    "terminal.integrated.scrollback": 1000000,
-    "vim.sneak": true,
-    "vim.sneakUseIgnorecaseAndSmartcase": true,
+    "editor.lineNumbers": "relative",
     "editor.smoothScrolling": true,
+    "vim.highlightedyank.enable": true,
+    "vim.leader": " ",
+    "vim.vimrc.enable": true,
+    "vim.sneak": true,
+    "terminal.integrated.scrollback": 1000000,
+    "vim.replaceWithRegister": true,
+    "vim.sneakUseIgnorecaseAndSmartcase": true,
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
@@ -24,13 +27,27 @@
             "before": [
                 "<C-r>"
             ],
-            "after": ["*", "N", "c", "i", "w"]
+            "after": [
+                "*",
+                "N",
+                "c",
+                "i",
+                "w"
+            ]
         },
         {
             "before": [
-                "c", "c"
+                "c",
+                "c"
             ],
-            "after": ["d", "d", "O"]
+            "after": [
+                "d",
+                "d",
+                "O"
+            ]
         }
-    ]
+    ],
+    "editor.cursorSurroundingLines": 5,
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false
 }
