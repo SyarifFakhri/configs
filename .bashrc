@@ -212,31 +212,37 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 alias sbrc='source ~/.bashrc'
 
 # FZF 
-export FZF_CTRL_T_COMMAND="fd -H . $HOME"
+export FZF_CTRL_T_COMMAND="fd -H"
 export FZF_ALT_C_COMMAND="fd -H -t d . $HOME"
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --height=50% --border"
 
+source ~/Programs/fzf-obc/bin/fzf-obc.bash # tab autocompletion!
+
+# fuzzy git checkout upstream
 fgchu() {
-    echo "$(git status)"
+    git status
     git fetch --all
     git checkout -t $(git branch -r | awk '!/HEAD/ {print}' | fzf --preview='git log $(echo {} | awk "{ gsub(/ /,\"\"); print }") --oneline -n 10')
 }
 
+# fuzzy git switch branch
 fgsw() {
-    echo "$(git status)"
+    git status
     git checkout $(git branch | fzf)
 }
 
+# fuzzy git delete multiple
 fgdm() {
-    echo "$(git status)"
+    git status
     for n in $(git branch | fzf --multi)
     do    
         git branch -d $n
     done    
 }
 
+# fuzzy git delete multiple upstream
 fgdmu() {
-    echo "$(git status)"
+    git status
     git fetch --all
     for n in $(git branch -r | awk -F"[//]" '{$1=""}{print ($3) ? $2"/"$3 : $2}' | fzf --multi)
     do    
@@ -244,3 +250,31 @@ fgdmu() {
         git push origin --delete $n
     done    
 }
+
+# fuzzy git checkout -b
+fgchb() {
+    git status
+    git checkout -b $(git branch | fzf --print-query | awk 'NR == 1 { print }')
+}
+
+# fuzzy git fixup
+fgfu() {
+    git status
+    git commit --fixup $(git log --oneline -n 20 | awk '{print $1}' | fzf --preview='git log --format=%B -n 1 {}')
+}
+
+#fuzzy git diff
+fgdf() {
+    git status
+    echo "Please choose a branch to diff:"
+    branch=$(git branch | fzf | sed -e 's/^[ \t]*//') 
+    current_branch=$(git rev-parse --abbrev-ref HEAD)
+    git diff $branch --name-only | fzf --preview='git diff --color=always --word-diff  '"$branch"' {}' \
+        --height=100% --header "Comparing $current_branch to $branch" 
+}
+
+#git status
+gs() {
+    git status
+}
+
