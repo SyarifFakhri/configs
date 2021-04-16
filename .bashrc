@@ -210,6 +210,12 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 #aliases
 alias sbrc='source ~/.bashrc'
+alias vim=/usr/bin/vim.gtk3 #for copy paste lol
+#bookmarks
+bookmarks="/home/syarif/programming/flutter_projects/qb-mobile-apps
+/home/syarif/programming
+"
+alias cdb='cd "$(echo "$bookmarks" | fzf)"'
 
 # FZF 
 export FZF_CTRL_T_COMMAND="fd -H"
@@ -217,6 +223,20 @@ export FZF_ALT_C_COMMAND="fd -H -t d . $HOME"
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --height=50% --border"
 
 source ~/Programs/fzf-obc/bin/fzf-obc.bash # tab autocompletion!
+
+# FZF live repl awk
+flra() {
+    echo "Please enter an input for awk..."
+    read
+    raw_input=$(eval $REPLY)
+    echo "Raw input..."
+    echo "$raw_input"
+    
+    awk_command=$(echo "" | fzf --print-query --preview "echo \"$raw_input\" | awk {q}" | awk 'NR == 1{print}')
+    echo "Awk_command:"
+    echo $(echo "$awk_command")
+}
+
 
 # fuzzy git checkout upstream
 fgchu() {
@@ -273,8 +293,26 @@ fgdf() {
         --height=100% --header "Comparing $current_branch to $branch" 
 }
 
+# Non-Fuzzy Git stuff
+
 #git status
 gs() {
     git status
 }
 
+#git fetch all
+gfa() {
+    git status
+    git fetch --all
+}
+
+#git commit -a . -m
+gca() {
+    git status
+    echo "Adding all files..."
+    git add .
+    git status
+    echo "Enter a commit message..."
+    read
+    git commit -m "$REPLY"
+}
