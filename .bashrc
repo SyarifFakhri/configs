@@ -237,6 +237,19 @@ flra() {
     echo "$awk_command"
 }
 
+# FZF live repl 
+flr() {
+    echo "Please enter an input for stdin:"
+    read
+    raw_input=$(eval $REPLY)
+    echo "Raw input..."
+    echo "$raw_input"
+    
+    input_command=$(echo "" | fzf --print-query --preview "echo \"$raw_input\" | bash -c {q}" | awk 'NR == 1{print}')
+    echo "Input command:"
+    echo "$input_command"
+}
+
 # fuzzy git log per branch
 fgbl() {
     git status
