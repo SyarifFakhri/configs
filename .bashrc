@@ -234,9 +234,14 @@ flra() {
     
     awk_command=$(echo "" | fzf --print-query --preview "echo \"$raw_input\" | awk {q}" | awk 'NR == 1{print}')
     echo "Awk_command:"
-    echo $(echo "$awk_command")
+    echo "$awk_command"
 }
 
+# fuzzy git log per branch
+fgbl() {
+    git status
+    git branch | fzf --preview='git log $(echo {} | awk "{ gsub(/[ *]/, \"\"); print }") --oneline -n 20' --height=100% --preview-window down
+}
 
 # fuzzy git checkout upstream
 fgchu() {
@@ -283,8 +288,8 @@ fgfu() {
     git commit --fixup $(git log --oneline -n 20 | awk '{print $1}' | fzf --preview='git log --format=%B -n 1 {}')
 }
 
-#fuzzy git diff
-fgdf() {
+#fuzzy git diff branch
+fgdb() {
     git status
     echo "Please choose a branch to diff:"
     branch=$(git branch | fzf | sed -e 's/^[ \t]*//') 
@@ -294,7 +299,6 @@ fgdf() {
 }
 
 # Non-Fuzzy Git stuff
-
 #git status
 gs() {
     git status
@@ -310,9 +314,9 @@ gfa() {
 gca() {
     git status
     echo "Adding all files..."
-    git add .
-    git status
     echo "Enter a commit message..."
     read
+    git add .
+    git status
     git commit -m "$REPLY"
 }
